@@ -1,0 +1,11 @@
+package chess;
+
+public interface  pieceProperty {
+	
+// here we have made interface and the class which will implement these 
+//	interface will compulsarly has to make the following function
+	public  void getCurrentPosition();
+	public  boolean canReach(int x , int y);
+	public  void moveTo(int i , int j) throws wrongPositionException;
+	public  boolean isOnHomeSquare();
+}

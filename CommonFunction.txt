@@ -1,0 +1,36 @@
+package chess;
+
+public class CommonFunction {
+	int x;
+	int y;
+	public CommonFunction(int x , int y , boolean color) {
+		this.x=x;
+		this.y=y;
+	}
+//	here er have made some common function that can be inherited
+	public boolean isOnBlackSquare() {
+		//considering a1 block as black
+		if((x+y)%2==0) {
+			return true;
+		}
+		return false;
+	}
+
+	public boolean isOnWhiteSquare() {
+		
+		if((x+y)%2!=0) {
+			return true;
+		}
+		return false;
+	}
+	public boolean isAtCorner() {
+	int sum =x+y;
+	System.out.println(x+" "+y);
+		if(sum==2 || sum==9 || sum==16) {
+		return true;
+	}
+		return false;
+	
+	
+}
+}

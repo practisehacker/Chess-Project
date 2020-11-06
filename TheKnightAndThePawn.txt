@@ -1,0 +1,197 @@
+package chess;
+
+public class ThePawn extends CommonFunction implements pieceProperty {
+	int x;
+	int y;
+//constructor
+	public ThePawn(int x ,int y, boolean color) {
+			super(x, y, color);	
+			this.x=x;
+			this.y=y;
+	}
+//	for print position
+	@Override
+	public void getCurrentPosition() {
+		System.out.println("Current Position of  Pawn is"+ x + y);
+	}
+//for checking piece is at corner or not
+	@Override
+	public boolean isAtCorner() {
+		if(x==1 && y==1) {
+			return true;
+		}
+		else if(x==8 && y==1) {
+			return true;
+		}
+		else if(x==1 && y==8) {
+			return true;
+		}
+		else if(x==8 && y==8) {
+			return true;
+		}else {
+			return false;
+		}
+		
+	}
+//	will check position is reachable or not
+	@Override
+	public boolean canReach(int i ,int j) {
+			if(x+1==i && y==j) {
+				return true;
+			}
+			return false;
+		
+	}
+//will move if position is valid else throw exception
+	public void moveTo(int i , int j) throws wrongPositionException {
+		if(x+1!=i || y!=j) {
+			wrongPositionException e = new wrongPositionException();
+			throw e;
+		}else {
+			x=i;
+			y=j;
+			System.out.println("Pawn Is Moved to "+x+" "+ y);
+		}
+		
+	}
+//	will check if position is at home square or not
+	@Override
+	public boolean isOnHomeSquare() {
+		if(x==this.x && y==this.y) {
+			return true;
+		}
+		return false;
+	}
+	
+}
+
+
+
+package chess;
+
+public class theKnight extends CommonFunction  implements pieceProperty {
+	int x;
+	int y ;
+//	constructor
+	public theKnight(int x , int y, boolean color) {
+		super(x, y, color);
+		this.x=x;
+		this.y=y;
+	}
+//	will give current position
+	@Override
+	public void getCurrentPosition() {
+		System.out.println("Current Position Of Knight is"+x+" "+y);
+	}
+//for checking corner position
+	@Override
+	public boolean isAtCorner() {
+		if(x==1 && y==1) {
+			return true;
+		}
+		else if(x==8 && y==1) {
+			return true;
+		}
+		else if(x==1 && y==8) {
+			return true;
+		}
+		else if(x==8 && y==8) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+//	for checking position can be reached or not
+	@Override
+	public boolean canReach(int i, int j) {
+		if(x+2==i && y+1==j) {
+			return true;
+		}
+		else if(x+2==i && y-1==j) {
+			return true;
+		}
+		else if(x-2==i && y+1==j) {
+			return true;
+		}
+		else if(x-2==i && y-1==j) {
+			return true;
+		}
+		else if(x+1==i && y+2==j) {
+			return true;
+		}
+		else if(x-1==i && y+2==j) {
+			return true;
+		}
+		else if(x-1==i && y-2==j) {
+			return true;
+		}
+		else if(x+1==i && y-2==j) {
+			return true;
+		}
+		else {
+			return false;
+		}
+		
+	}
+//	will move if movable if not then throw exception
+	@Override
+	public void moveTo(int i, int j) throws wrongPositionException {
+		if(x+2==i && y+1==j) {
+			x=i;
+			y=j;
+			System.out.println("Knight Is Moved To Position"+ x+" "+y);
+		}
+		else if(x+2==i && y-1==j) {
+			x=i;
+			y=j;
+			System.out.println("Knight Is Moved To Position"+ x+" "+y);
+		}
+		else if(x-2==i && y+1==j) {
+			x=i;
+			y=j;
+			System.out.println("Knight Is Moved To Position"+ x+" "+y);
+		}
+		else if(x-2==i && y-1==j) {
+			x=i;
+			y=j;
+			System.out.println("Knight Is Moved To Position"+ x+" "+y);
+		}
+		else if(x+1==i && y+2==j) {
+			x=i;
+			y=j;
+			System.out.println("Knight Is Moved To Position"+ x+" "+y);
+		}
+		else if(x-1==i && y+2==j) {
+			x=i;
+			y=j;
+			System.out.println("Knight Is Moved To Position"+ x+" "+y);
+		}
+		else if(x-1==i && y-2==j) {
+			x=i;
+			y=j;
+			System.out.println("Knight Is Moved To Position"+ x+" "+y);
+		}
+		else if(x+1==i && y-2==j) {
+			x=i;
+			y=j;
+			System.out.println("Knight Is Moved To Position"+ x+" "+y);
+		}
+		else {
+			wrongPositionException e =new wrongPositionException();
+			throw e;
+		}
+		
+	}
+//	will check for home position
+	@Override
+	public boolean isOnHomeSquare() {
+		if(x==this.x && y==this.y) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+
+
+}

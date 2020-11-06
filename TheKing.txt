@@ -1,0 +1,73 @@
+package chess;
+
+public class TheKing extends CommonFunction implements pieceProperty  {
+	int x;
+	int y;
+//	constructor
+	public TheKing(int x , int y, boolean color) {
+		super(x, y, color);
+		this.x=x;
+		this.y=y;
+	}
+//	will give current position
+	@Override
+	public void getCurrentPosition() {
+		System.out.println("Current Position Of King Is"+x + " "+y );
+	}
+	//for checking corner position
+		@Override
+		public boolean isAtCorner() {
+			if(x==1 && y==1) {
+				return true;
+			}
+			else if(x==8 && y==1) {
+				return true;
+			}
+			else if(x==1 && y==8) {
+				return true;
+			}
+			else if(x==8 && y==8) {
+				return true;
+			}else {
+				return false;
+			}
+		}
+//	will check is positon can be reached or not
+	@Override
+	public boolean canReach(int i, int j) {
+		int minX = x-1;
+		int maxX=x+1;
+		int minY=y-1;
+		int maxY=y+1;
+		if(i>=minX && i<=maxX && j>=minY && j<=maxY && i!=x && j!=y ) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+//	will move if possible else throw exception
+	@Override
+	public void moveTo(int i, int j) throws wrongPositionException {
+		int minX = x-1;
+		int maxX=x+1;
+		int minY=y-1;
+		int maxY=y+1;
+		if(i>=minX && i<=maxX && j>=minY && j<=maxY && i!=x && j!=y ) {
+			x=i;
+			y=j;
+			System.out.println("Position Of King Is Updated To"+x+" "+y );
+		}else {
+			wrongPositionException e = new wrongPositionException();
+			throw e;
+		}
+		
+	}
+//	will check for home position
+	@Override
+	public boolean isOnHomeSquare() {
+		if(x==this.x && y ==this.y) {
+			return true;
+		}
+		return false;
+	}
+}

@@ -1,0 +1,78 @@
+package chess;
+
+public class TheBishop extends CommonFunction implements pieceProperty {
+		int x;
+		int y;
+//		constructor
+	public TheBishop(int x , int y ,boolean color) {
+		super(x, y, color);
+		this.x=x;
+		this.y=y;
+		
+	}
+//	gives current position
+	@Override
+	public void getCurrentPosition() {
+		System.out.println("Current Position Of Bishop Is " + x+" "+y);
+		
+	}
+//check for corner position
+	@Override
+	public boolean isAtCorner() {
+		if(x==1 && y==1) {
+			return true;
+		}
+		else if(x==8 && y==1) {
+			return true;
+		}
+		else if(x==1 && y==8) {
+			return true;
+		}
+		else if(x==8 && y==8) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+//	will check is position can be reached or not
+	@Override
+	public boolean canReach(int i, int j) {
+		int countX=0;
+		int countY=0;
+		countX = x-i;
+		countY=y-j;
+		if(countX==countY && i!=x && j!=y) {
+			return true;
+		}else {
+			return false;
+		}
+		
+	}
+//	will move to particular position if possible else throw exception
+	@Override
+	public void moveTo(int i, int j) throws wrongPositionException {
+		int countX=0;
+		int countY=0;
+		countX = x-i;
+		countY=y-j;
+		if(countX==countY && i!=x && j!=y) {
+			x=x+countX;
+			y=y+countY;
+			System.out.println("New Position of Bishow is "+x+" "+y);
+		}else {
+			wrongPositionException e = new wrongPositionException();
+			throw e;
+		}
+		
+	}
+//	will check for home position
+	@Override
+	public boolean isOnHomeSquare() {
+		if(x==this.x && y==this.y) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+
+}

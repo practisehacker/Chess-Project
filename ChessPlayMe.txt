@@ -1,0 +1,75 @@
+package chess;
+
+public class chessPlay {
+
+	public static void main(String[] args) {
+		// If In Constructor true is passed then color is white 
+		// If	In COnstructor False Values Is Passed Then Color Is Black
+//		Placing whites Pieces on one end of board
+//		First Placing All white Pawns 
+		ThePawn Pawn1W = new ThePawn(2, 1, true);
+		ThePawn Pawn2W = new ThePawn(2, 2, true);	
+		ThePawn Pawn3W = new ThePawn(2, 3, true);	
+		ThePawn Pawn4W = new ThePawn(2, 4, true);	
+		ThePawn Pawn5W = new ThePawn(2, 5, true);	
+		ThePawn Pawn6W = new ThePawn(2, 6, true);	
+		ThePawn Pawn7W = new ThePawn(2, 7, true);	
+		ThePawn Pawn8W = new ThePawn(2, 8, true);
+//		Now Placing All Rook, knight,bishop,queen,king
+		TheRook Rook1W = new TheRook(1, 1, true);
+		theKnight Knight1W = new theKnight(1, 2, true);
+		TheBishop Bishop1W = new TheBishop(1, 3, true);
+		TheQueen QueenW = new TheQueen(1, 4, true);
+		TheKing KingW = new TheKing(1, 5, true);
+		TheBishop Bishop2W = new TheBishop(1, 6, true);
+		theKnight Knight2W = new theKnight(1, 7, true);
+		TheRook Rook2W = new TheRook(1, 8, true); 
+//		Till above line we have set all the white pieces
+//		Now Setting All the pieces for black
+//		First Setting All Black Pawn
+		ThePawn Pawn1B = new ThePawn(7, 1, false);
+		ThePawn Pawn2B = new ThePawn(7, 2, false);
+		ThePawn Pawn3B = new ThePawn(7, 3, false);
+		ThePawn Pawn4B = new ThePawn(7, 4, false);
+		ThePawn Pawn5B = new ThePawn(7, 5, false);
+		ThePawn Pawn6B = new ThePawn(7, 6, false);
+		ThePawn Pawn7B = new ThePawn(7, 7, false);
+		ThePawn Pawn8B = new ThePawn(7, 8, false);
+//		Now Placing All Rook, knight,bishop,queen,king
+		TheRook Rook1B = new TheRook(8, 1,false);
+		theKnight Knight1B = new theKnight(8, 2, false);
+		TheBishop Bishop1B = new TheBishop(8, 3, false);
+		TheQueen QueenB = new TheQueen(8, 4, false);
+		TheKing KingB = new TheKing(8, 5, false);
+		TheBishop Bishop2B = new TheBishop(8, 6, false);
+		theKnight Knight2B = new theKnight(8, 7, false);
+		TheRook Rook2B = new TheRook(8, 8, false); 
+//		Till Now we have set the both color pieces now we will apply particular 
+//		function on these pieces
+		Pawn1W.getCurrentPosition();
+		KingW.getCurrentPosition();
+		System.out.println(Pawn1W.isAtCorner());
+		System.out.println(Rook1W.isAtCorner());
+		System.out.println(Pawn5W.isOnWhiteSquare());
+		System.out.println(Knight1W.isOnWhiteSquare());
+		System.out.println(Pawn5W.isOnBlackSquare());
+		System.out.println(Knight1W.isOnBlackSquare());
+		System.out.println(Bishop1W.canReach(3, 5));
+		System.out.println(Knight2W.canReach(3, 6));
+		System.out.println(Pawn1W.isOnHomeSquare());
+		try {
+			Pawn1W.moveTo(3, 1);
+		} catch (wrongPositionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Pawn1W.moveTo(3, 4);
+		} catch (wrongPositionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+	
+	}
+}

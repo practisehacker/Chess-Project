@@ -1,0 +1,151 @@
+package chess;
+
+public class TheRook extends CommonFunction implements pieceProperty {
+	int x;
+	int y;
+//	constructor for rook
+	public TheRook(int x ,int y,boolean color) {
+		super(x, y, color);
+		this.x=x;
+		this.y=y;
+		
+	}
+//	override because of implements pieceProperty
+	@Override
+	public void getCurrentPosition() {
+		System.out.println("Current Position Of Rook is"+x+" "+y);
+	}
+
+//at corner will check is the piece is at corner position or not
+	@Override
+	public boolean isAtCorner() {
+		if(x==1 && y==1) {
+			return true;
+		}
+		else if(x==8 && y==1) {
+			return true;
+		}
+		else if(x==1 && y==8) {
+			return true;
+		}
+		else if(x==8 && y==8) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+//can reach will check if the piece can reach a particular position or not
+	@Override
+	public boolean canReach(int i, int j) {
+		 if(i!=x && i>=1&&i<=8 && y==j) {
+			 return true;
+		 }
+		 if(j!=y && j>=1 && j>=8 && x==i ) {
+			 return true;
+		 }
+		return false;
+	}
+//if user ask to move to particular position id position is corrent then it will move
+//	if position is not correct then it will throw wrongPositionException
+	@Override
+	public void moveTo(int i, int j) throws wrongPositionException {
+		 if(i!=x && i>=1&&i<=8 && y==j) {
+			 x=i;
+			 y=j;
+			 System.out.println("Rook Is Moved To"+ x +" "+ y);
+		 }
+		 if(j!=y && j>=1 && j>=8 && x==i ) {
+			 x=i;
+			 y=j;
+			 System.out.println("Rook Is Moved To"+x +" "+ y);
+		 }
+		 else {
+			 wrongPositionException e = new wrongPositionException();
+			 throw e;
+		 }
+		
+	}
+//these will check if a piece is on homesquare or not
+	@Override
+	public boolean isOnHomeSquare() {
+		if(isAtCorner()) {
+			return true;
+		}
+		return false;
+	}
+	
+}
+
+
+
+package chess;
+
+public class TheQueen extends CommonFunction implements pieceProperty {
+//	queen can move in any direction 
+	int x;
+	int y;
+//	constructor
+	public TheQueen(int x ,int y , boolean color) {
+		super(x, y, color); 
+		 this.x=x;
+		  this.y=y;
+	}
+//	will print current position
+	@Override
+	public void getCurrentPosition() {
+		System.out.println("Current Position of Queen Is"+x+" "+y );
+	}
+//will check if piece is at corner 
+	@Override
+	public boolean isAtCorner() {
+		if(x==1 && y==1) {
+			return true;
+		}
+		else if(x==8 && y==1) {
+			return true;
+		}
+		else if(x==1 && y==8) {
+			return true;
+		}
+		else if(x==8 && y==8) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+//	will chech is particular position can be reached or not 
+	@Override
+	public boolean canReach(int i, int j) {
+		int sum=x+y;
+		int sum1=i+j;
+		if(sum%2==0 && sum1%2==0 ) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+//	will move peice if position is valid else throw exception
+	@Override
+	public void moveTo(int i, int j) throws wrongPositionException {
+		int sum=x+y;
+		int sum1=i+j;
+		if(sum%2==0 && sum1%2==0 ) {
+			x=i;
+			y=j;
+			System.out.println("Position Of Queen Is Updated to"+x+" "+y );
+		}else {
+			wrongPositionException e = new wrongPositionException();
+			throw e;
+		}
+		
+	}
+//	will check piece is on home screen or not
+	@Override
+	public boolean isOnHomeSquare() {
+		if(x==this.x && y==this.y) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+}
